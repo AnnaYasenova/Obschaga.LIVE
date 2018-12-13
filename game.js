@@ -1,14 +1,13 @@
 ﻿var stage;
 var player = {};
 var outputs = {};
-var inventory = {};
 var visited = {};
 
 var page;
 var text;
 var paragraph;
 
-function goto(id) {
+function goto(id, language='ukr') {
     // Switch stage
     stage = data[id];
 
@@ -20,9 +19,9 @@ function goto(id) {
     breaks(stage.start || 'paragraph')
 
     // Add description
-    write(stage.text);
+    write(text_stage[id][language]);//stage.text);
 
-    update();
+    update(id, language);
 
     breaks(stage.end || 'none');
 
@@ -30,12 +29,12 @@ function goto(id) {
 }
 
 // Update choices
-function update() {
+function update(id, language) {
     choices.innerHTML = "";
 
     // Add choices
-    for (var i in stage.choices) {
-        var choice = stage.choices[i];
+    for (var i in choice_description[id]) { //stage.choices) {
+        var choice = choice_description[id][i]; //[i];
 
         // Test condition if it has one
         if (choice.condition && !eval(choice.condition))
@@ -46,21 +45,22 @@ function update() {
 
         // Add button
         var control = document.createElement('button');
-        control.innerText = prepossess(choice.text);
+        control.innerText = prepossess(choice.text[language]);
         control.onclick = (function (choice) {
             return function () {
                 // Write "prompt"
-                write(choice.prompt);
+                if (choice.prompt)
+                    write(choice.prompt[language]);
                 // Execute "action"
                 if (choice.action) {
                     eval(choice.action);
                 }
                 // Goto stage / update
-                var s = choice.stage || stage.stage;
+                var s = data[id].stage;//choice.stage || stage.stage;
                 if (s)
                     goto(s);
                 else
-                    update(); // TODO: Fix description refresh
+                    update(id, language); // TODO: Fix description refresh
             }
         })(choice);
         choices.appendChild(control);
