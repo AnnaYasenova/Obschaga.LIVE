@@ -1,45 +1,31 @@
-//"action": "location.replace(\"hangman.html\")"
-
-//типа, "text":"chapter_1_variant_ok"
-//key, ukrainian, english
-//chapter_1_variant_ok, го, let's go!
-
-
-
 var data = 
 {
   "start": {
     "start": "page",
     "stage": "chapter_1_start",
-    "end": "paragraph"/*,
-    "choices": [
-      {
-        "text": "Прийнято, вриваємось"
-      }
-    ]*/
+    "end": "paragraph"
   },
   "chapter_1_start": {
     "start": "page",
-    "stage": "commenda"//,
-    //"choices": 
+    "stage": "commenda"
   },
   "commenda": {
     "start": "paragraph",
     "stage": "start_commenda_talk",
-    "end": "paragraph",
-    //"choices": 
+    "end": "paragraph"
   },
   "start_commenda_talk": {
     "start": "page",
-    "stage": "name",
-    //"choices": 
+    "stage": "commenda_talk_hi"
+  },
+  "commenda_talk_hi": {
+    "start": "paragraph",
+    "stage": "start_commenda_talk"//,
+    //"end": "paragraph"
   },
   "end": {
     "text": " --- The End --- "
   }
-
-  
-  
 };
 
 var text_stage = {
@@ -57,6 +43,10 @@ var text_stage = {
   },
   "start_commenda_talk": {
     "ukr": "<h4>В кабінеті коменди.</h4> Ти переступив поріг небезпечної зони. Шляху назад немає. Будь пусічкою і виберешся живим.",
+    "en": "efw"
+  },
+  "commenda_talk_hi": {
+    "ukr": "- Доброго дня! З питань поселення в гуртожиток звертатися до мене. Але, нажаль, не зможу вам нічим допомогти, адже списки на поселення же сформовані і редагуються лише  екстренних випадках.",
     "en": "efw"
   }
 };
@@ -86,5 +76,75 @@ var choice_description = {
         },
         "action": "player.energy = 100; player.respect = 100; player.cash = 1000"
       }
-    ]
+    ],
+  "start_commenda_talk": [
+      {
+        "text": {
+          "ukr": "- Доброго дня, шановна. Я дуже хочу поселитися у вашому гуртожитку.",
+          "en": ""
+        },
+        "prompt": {
+          "ukr": "- Доброго дня, шановна. Я дуже хочу поселитися у вашому гуртожитку. Проте, так історично склалося, що записали мене до іншого гуртожитку. Скажіть, будь ласка, чи можете ви допомогти мені?",
+          "en": ""
+        },
+        "action": "player.respect += 5;"
+      }, 
+      {
+        "text": {
+          "ukr": "- Вєчєр в хату! Хочу жити в цих хоромах.",
+          "en": ""
+        },
+        "prompt": {
+          "ukr": "- Драстє, дарагуша. Хочу жити в цих хоромах, пуша тут мій бро. Но записали мене нє туда. Памагітє, плєс.",
+          "en": ""
+        },
+        "action": "player.respect -= 5;"
+      }, 
+      {
+        "text": {
+          "ukr": "- Йоу. Треба за поселення добазаритись.",
+          "en": ""
+        },
+        "prompt": {
+          "ukr": "- Йоу. Тут можна за поселення добазаритись?",
+          "en": ""
+        },
+        "action": "player.respect -= 5;"
+      }
+    ],
+  "commenda_talk_hi": [
+      {
+        "text": {
+          "ukr": "- Так, я це чудово розумію.",
+          "en": ""
+        },
+        "prompt": {
+          "ukr": "- Так, я це чудово розумію. Але мені дуже подобається саме ЦЕЙ гуртожиток і я буду дуже вдячний, якщо Ви допоможете мені з поселенням.",
+          "en": ""
+        },
+        "action": "player.respect += 5;"
+      }, 
+      {
+        "text": {
+          "ukr": "- Та то понятно, йоу.",
+          "en": ""
+        },
+        "prompt": {
+          "ukr": "- Та то понятно, йоу. Давайте якось не через касу проблемку вирішувати.",
+          "en": ""
+        },
+        "action": "player.respect -= 5;"
+      }, 
+      {
+        "text": {
+          "ukr": "- Давайте по ділу: яка ціна питання?",
+          "en": ""
+        },
+        "prompt": {
+          "ukr": "- Давайте по ділу: яка ціна питання?",
+          "en": ""
+        },
+        "action": "player.respect -= 5;"
+      }
+  ]
 };

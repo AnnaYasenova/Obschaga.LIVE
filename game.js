@@ -49,8 +49,10 @@ function update(id, language) {
         control.onclick = (function (choice) {
             return function () {
                 // Write "prompt"
-                if (choice.prompt)
+                if (choice.prompt) {
+                    breaks('paragraph');
                     write(choice.prompt[language]);
+                }
                 // Execute "action"
                 if (choice.action) {
                     eval(choice.action);
