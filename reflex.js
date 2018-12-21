@@ -33,7 +33,7 @@ function remark(responseTime) {
 }
 
 function stopTest() {
-	if(bgChangeStarted) {
+	if (bgChangeStarted) {
 		endTime = new Date();
 		var responseTime = (endTime.getTime() - startTime.getTime()) / 1000;
 
@@ -60,7 +60,7 @@ function randNumber() {
 }
 
 function startit() {
-	if(startPressed) {
+	if (startPressed) {
 		alert("Already started. Press stop to stop");
 		return;
 	}

@@ -5,10 +5,11 @@ var to_guess = "";
 var display_word = "";
 var used_letters = "";
 var wrong_guesses = 0;
-
+var max_wrong_quesses = 10;
 
 function selectLetter(l)
 {
+	//alert(player.energy);
 	if (can_play == false) {
 		return;
 	}
@@ -41,8 +42,10 @@ function selectLetter(l)
 		document.game.displayWord.value = display_word;
 			
 		if (display_word.indexOf("#") == -1) {
-			alert("Well done, you have won!");
+			alert("Конгратюлейшн. Ти виграв шавуху :)");
+
 			can_play = false;
+			location.replace("second_part.html");
 		}
 	}
 	else {
@@ -50,10 +53,11 @@ function selectLetter(l)
 		wrong_guesses += 1;
 		eval("document.hm.src=\"hangman_pictures/hm" + wrong_guesses + ".gif\"");
 		
-		if (wrong_guesses == 10) {
+		if (wrong_guesses == max_wrong_quesses) {
 		// lost
-			alert("Sorry, you have lost!");
+			alert("ну ти й лошара.");
 			can_play = false;
+			location.replace("second_part.html");
 		}
 	}
 }
