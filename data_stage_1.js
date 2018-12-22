@@ -125,7 +125,8 @@ var choice_description = {
       "text": {
         "ukr": "Прийнято, вриваємось",
         "en": ""
-      }
+      },
+      "action": "player.energy = 100; player.respect = 100; player.cash = 1000, player.mood = 100"
     }
   ],
   "chapter_1_start": [
@@ -141,8 +142,7 @@ var choice_description = {
       "text": {
         "ukr": "Ок. Почати розмову з комендою.",
         "en": ""
-      },
-      "action": "player.energy = 100; player.respect = 100; player.cash = 1000, player.mood = 100"
+      }
     }
   ],
   "start_commenda_talk": [

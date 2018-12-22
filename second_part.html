@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta charset="utf-8" />
+<meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>OBSCHAGA.Live</title>
+    <title>OBSCHAGA.Live</title>    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet" />
     <script src="data_stage_2.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="game.js"></script>
+    <script src="functions.js"></script>
     <script src="reflex.js"></script>
 </head>
 </head>
 <body onload="goto('start')">
+<div class="header clear">
+    <div class="dropdown float-right">
+        <div class="select">
+            <span>UKR</span>
+            <i class="fa fa-chevron-left"></i>
+        </div>
+        <input type="hidden" name="language">
+        <ul class="dropdown-menu">
+            <li id="ukr">UKR</li>
+            <li id="eng">ENG</li>
+        </ul>
+    </div>
+</div>
+
+<div id="PlayerProgress">
+
+</div>
     <div id="wrapper">
         <div id="story"></div>
         <div class="space">
             <div id="choices" class="page input"></div>
         </div>
     </div>
+
 </body>
 </html>
 

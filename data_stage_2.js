@@ -65,7 +65,8 @@ var choice_description = {
       "text": {
         "ukr": "Захажу",
         "en": ""
-      }
+      },
+      "action": "player.energy = 100; player.respect = 100; player.cash = 1000, player.mood = 100"
     }
   ],
   "chapter_2_start": [
@@ -73,8 +74,7 @@ var choice_description = {
       "text": {
         "ukr": "Хлоп тапком",
         "en": ""
-      },
-      "action": "player.energy = 100; player.respect = 100; player.cash = 1000, player.mood = 100"
+      }
     }
   ],
   "sosed_privet": [

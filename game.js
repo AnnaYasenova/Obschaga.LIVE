@@ -7,7 +7,10 @@ var page;
 var text;
 var paragraph;
 
+start_show_progress_tages = ["chapter_1_start", "chapter_2_start"];
+
 function goto(id, language='ukr') {
+
     // Switch stage
     stage = data[id];
 
@@ -16,10 +19,16 @@ function goto(id, language='ukr') {
         return;
     }
 
+    if(start_show_progress_tages.includes(id)){ //(id == 'chapter_1_start' || id == 'chapter_2_start'){
+        eval(stage.action);
+        updateProgress();
+    }
+
     breaks(stage.start || 'paragraph')
 
     // Add description
     write(text_stage[id][language]);//stage.text);
+
 
     update(id, language);
 
@@ -56,6 +65,7 @@ function update(id, language) {
                 // Execute "action"
                 if (choice.action) {
                     eval(choice.action);
+                    updateProgress();
                 }
                 // Goto stage / update
                 var s = data[id].stage;//choice.stage || stage.stage;
@@ -118,5 +128,3 @@ function prepossess(t) {
     }
     return t;
 }
-
-
